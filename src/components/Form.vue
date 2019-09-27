@@ -1,11 +1,11 @@
 <template>
   <div class="form">
     <form
-      @submit="checkForm"
+      @submit="submitForm"
       novalidate
     >
 
-      <p v-if="errors.length">
+      <template v-if="errors.length">
         <b>Please correct the following error<template v-if="errors.length > 1">s</template>:</b>
         <ul>
           <li
@@ -15,7 +15,7 @@
             {{ error.value }}
           </li>
         </ul>
-      </p>
+      </template>
 
       <div>
         <label>Name</label>
@@ -69,9 +69,6 @@ function validateEmail(email) {
 
 export default {
   name: 'Form',
-  // props: {
-  //   msg: String,
-  // },
   data() {
     return {
       errors: [],
@@ -81,10 +78,23 @@ export default {
     };
   },
   methods: {
-    checkForm(e) {
-      if (this.name && this.email && this.skills) {
-        this.errors = [];
+    submitForm() {
+      if (!this.isFormValid()) {
+        return;
+      }
 
+      this.$store.commit(
+        'ADD_JOB_APPLICATION',
+        {
+          name: this.name,
+          email: this.email,
+          skills: this.skills,
+        },
+      );
+      this.resetForm();
+    },
+    isFormValid() {
+      if (this.name && this.email && this.skills) {
         return true;
       }
 
@@ -99,16 +109,20 @@ export default {
       }
 
       if (this.email && !validateEmail(this.email)) {
-        this.errors.push({ id: 3, value: 'Incorrect email.' });
+        this.errors.push({ id: 3, value: 'Email incorrect.' });
       }
 
       if (!this.skills) {
         this.errors.push({ id: 4, value: 'Skills required.' });
       }
 
-      e.preventDefault();
-
-      return this.errors;
+      return false;
+    },
+    resetForm() {
+      this.errors = [];
+      this.name = null;
+      this.email = null;
+      this.skills = null;
     },
   },
 };
