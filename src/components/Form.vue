@@ -5,20 +5,6 @@
       novalidate
     >
 
-      <template v-if="errors.length">
-        <div class="errors">
-          <b>Please correct the following error<template v-if="errors.length > 1">s</template>:</b>
-          <ul>
-            <li
-              v-for="error in errors"
-              :key="error.id"
-            >
-              {{ error.value }}
-            </li>
-          </ul>
-        </div>
-      </template>
-
       <div class="form-element">
         <div>
           <label>Name</label>
@@ -63,6 +49,20 @@
           </optgroup>
         </select>
       </div>
+
+      <template v-if="errors.length">
+        <div class="errors">
+          <b>Please correct the following error<template v-if="errors.length > 1">s</template>:</b>
+          <ul>
+            <li
+              v-for="error in errors"
+              :key="error.id"
+            >
+              {{ error.value }}
+            </li>
+          </ul>
+        </div>
+      </template>
 
       <div class="form-element submit">
         <input type="submit" value="Send">
@@ -149,19 +149,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.errors {
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-  border-radius: .25rem;
-
-  ul {
-    list-style: none;
-    margin: 0.5em;
-    padding: 0;
-  }
+.form {
+  min-width: 300px;
 }
 
 .form-element {
@@ -213,7 +202,7 @@ export default {
 .info-box {
   position: absolute;
   top: 158px;
-  left: 350px;
+  left: 320px;
   height: 39px;
   width: 230px;
   padding: 15px 5px 15px 15px;
@@ -232,6 +221,21 @@ export default {
     border-right: 15px solid #425B76;
     border-left: none;
     border-bottom: 15px solid transparent;
+  }
+}
+
+.errors {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  border-radius: .25rem;
+
+  ul {
+    list-style: none;
+    margin: 0.5em;
+    padding: 0;
   }
 }
 </style>
