@@ -6,18 +6,20 @@
     >
 
       <template v-if="errors.length">
-        <b>Please correct the following error<template v-if="errors.length > 1">s</template>:</b>
-        <ul>
-          <li
-            v-for="error in errors"
-            :key="error.id"
-          >
-            {{ error.value }}
-          </li>
-        </ul>
+        <div class="errors">
+          <b>Please correct the following error<template v-if="errors.length > 1">s</template>:</b>
+          <ul>
+            <li
+              v-for="error in errors"
+              :key="error.id"
+            >
+              {{ error.value }}
+            </li>
+          </ul>
+        </div>
       </template>
 
-      <div>
+      <div class="form-element">
         <label>Name</label>
         <input
           v-model="name"
@@ -26,7 +28,7 @@
         >
       </div>
 
-      <div>
+      <div class="form-element">
         <label>Email</label>
         <input
           v-model="email"
@@ -34,7 +36,7 @@
         >
       </div>
 
-      <div>
+      <div class="form-element">
         <label>Skills</label>
         <select
           v-model="skills"
@@ -55,7 +57,9 @@
         </select>
       </div>
 
-      <input type="submit" value="Submit">
+      <div class="form-element submit">
+      <input type="submit" value="Send">
+      </div>
     </form>
   </div>
 </template>
@@ -129,5 +133,50 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.errors {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  border-radius: .25rem;
 
+  ul {
+    list-style: none;
+    margin: 0.5em;
+    padding: 0;
+  }
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1em 0;
+
+  label {
+    margin: 0.2em 0;
+  }
+
+  input, select {
+    width: 100%;
+    height: 1.5em;
+    font-size: 1em;
+    background-color: #F5F8FA;
+    border: 1px solid #DFE6ED;
+  }
+
+  &.submit {
+    align-items: flex-end;
+
+    input {
+      width: 5em;
+      height: 2em;
+      font-size: 0.9em;
+      color: white;
+      background-color: #25A4BC;
+      border: none;
+    }
+  }
+}
 </style>

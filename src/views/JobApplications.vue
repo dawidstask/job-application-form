@@ -7,9 +7,10 @@
         <job-application :application="application"></job-application>
       </div>
     </template>
-    <template v-if="!applications.length">
+    <template v-else>
       <p>No job applications so far</p>
     </template>
+
   </div>
 </template>
 

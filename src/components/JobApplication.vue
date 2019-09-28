@@ -19,12 +19,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
   .application {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 300px;
+    min-width: 300px;
     margin: 1em;
     padding: 0.5em;
     border: 1px solid #EFF2F6;
