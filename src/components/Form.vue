@@ -150,7 +150,7 @@ export default {
 
 <style scoped lang="scss">
 .form {
-  min-width: 300px;
+  min-width: 350px;
 }
 
 .form-element {
@@ -202,7 +202,7 @@ export default {
 .info-box {
   position: absolute;
   top: 158px;
-  left: 320px;
+  left: 550px;
   height: 39px;
   width: 230px;
   padding: 15px 5px 15px 15px;
