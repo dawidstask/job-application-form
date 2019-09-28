@@ -20,7 +20,14 @@
       </template>
 
       <div class="form-element">
-        <label>Name</label>
+        <div>
+          <label>Name</label>
+          <span
+            @mouseover="isInfoVisible = true"
+            @mouseleave="isInfoVisible = false"
+            class="icon"
+          >i</span>
+        </div>
         <input
           v-model="name"
           type="text"
@@ -58,9 +65,17 @@
       </div>
 
       <div class="form-element submit">
-      <input type="submit" value="Send">
+        <input type="submit" value="Send">
       </div>
     </form>
+
+    <span
+      v-if="isInfoVisible"
+      class="info-box"
+    >
+      Let's be friends, please provide your name so we can get in touch with you!
+    </span>
+
   </div>
 </template>
 
@@ -79,6 +94,7 @@ export default {
       name: null,
       email: null,
       skills: null,
+      isInfoVisible: false,
     };
   },
   methods: {
@@ -177,6 +193,45 @@ export default {
       background-color: #25A4BC;
       border: none;
     }
+  }
+
+  .icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    padding: 0;
+    margin: 0 0.4em;
+    font-size: 0.8em;
+    line-height: 1em;
+    color: white;
+    background-color: #7693B2;
+    border-radius: 1em;
+    cursor: pointer;
+  }
+}
+
+.info-box {
+  position: absolute;
+  top: 158px;
+  left: 350px;
+  height: 39px;
+  width: 230px;
+  padding: 15px 5px 15px 15px;
+  color: white;
+  background-color: #425B76;
+  border-radius: 5px;
+  font-size: 13px;
+  text-align: left;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    left: -11px;
+    top: 18px;
+    border-top: 15px solid transparent;
+    border-right: 15px solid #425B76;
+    border-left: none;
+    border-bottom: 15px solid transparent;
   }
 }
 </style>
