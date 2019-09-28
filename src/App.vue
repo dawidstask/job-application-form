@@ -4,7 +4,9 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/applications">Applications</router-link>
     </div>
-    <router-view/>
+    <div class="container">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -25,5 +27,9 @@
       color: #42b983;
     }
   }
+}
+.container {
+  display: flex;
+  justify-content: center;
 }
 </style>

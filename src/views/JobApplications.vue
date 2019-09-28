@@ -4,9 +4,7 @@
 
     <template v-if="applications.length">
       <div v-for="application in applications" :key="application.id">
-        <p>{{ application.name }}</p>
-        <p>{{ application.email }}</p>
-        <p>{{ application.skills }}</p>
+        <job-application :application="application"></job-application>
       </div>
     </template>
     <template v-if="!applications.length">
@@ -17,9 +15,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import JobApplication from '@/components/JobApplication.vue';
 
 export default {
   name: 'JobApplications',
+  components: {
+    JobApplication,
+  },
   computed: {
     ...mapGetters({
       applications: 'APPLICATIONS',
